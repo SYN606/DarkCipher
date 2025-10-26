@@ -2,3 +2,6 @@ cffi==2.0.0
 colorama==0.4.6
 cryptography==45.0.7
 pycparser==2.23
+pyqt6==6.10.0
+pyqt6-qt6==6.10.0
+pyqt6-sip==13.10.2
