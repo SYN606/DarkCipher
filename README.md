@@ -7,21 +7,20 @@
 [![Stars](https://img.shields.io/github/stars/SYN606/DarkCipher.svg?style=social)](https://github.com/SYN606/DarkCipher/stargazers)
 ![Developer](https://img.shields.io/badge/developer-SYN-red.svg)
 
-**DarkCipher** is a command-line tool for **AES-256-GCM encryption & decryption**, supporting both text and files.  
-It derives encryption keys securely from passwords using **PBKDF2-HMAC-SHA256** (default) or **scrypt** (memory-hard).
+**DarkCipher** is a **Python-based AES-256-GCM** encryption tool for securely encrypting and decrypting text and files using a password.
 
+It uses modern cryptography with authenticated encryption, strong key derivation, and a versioned, self-describing encrypted blob format.
 ---
 
 ## Features
 
-- 🔐 **AES-256 in GCM mode** (authenticated encryption)
-- 🧩 **Password-based key derivation** with PBKDF2 or scrypt
-- 🎲 **Random salt (16 bytes) and IV (12 bytes)** per encryption
-- 📦 **Unified Base64-encoded blob** (contains version, IV, salt, ciphertext)
-- 📝 **Supports both text and files**
-- 🙈 **Hidden password input** (via getpass)
-- 🛠️ **Modular design** (`main.py`, `aes_gcm.py`, `key_derivation.py`, `utils.py`)
-- ✅ **Includes pytest tests**
+- AES-256-GCM (authenticated encryption)
+- PBKDF2-HMAC-SHA256 (default) & scrypt
+- Random salt (16B) and IV (12B)
+- Self-describing Base64 encrypted blob
+- Text & file encryption
+- CLI and PyQt6 GUI
+- Secure password input
 
 ---
 
@@ -54,15 +53,15 @@ It derives encryption keys securely from passwords using **PBKDF2-HMAC-SHA256** 
 **Encrypt a text or file:**
 
 ```python
-python main.py encrypt --text "Secret Message"
-python main.py encrypt --file secrets.txt
+python cli/main.py -e -t "secret"
+python cli/main.py -e -f file.txt
 ```
 
 **Decrypt a text or file:**
 
 ```python
-python main.py decrypt --text "<Base64Ciphertext>"
-python main.py decrypt --file secrets.enc
+python cli/main.py -d -t "<blob>"
+python cli/main.py -d -f file.txt.enc
 ```
 
 - You will be prompted securely for a password.
